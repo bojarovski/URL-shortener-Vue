@@ -5,31 +5,45 @@
         <h1 class="text-h2 font-weight-bold">List Urls</h1>
       </div>
 
-      <v-row column="2">
-        <v-col>
+      <v-row>
+        <v-col v-for="(url, index) in urls" :key="index">
           <v-card
             append-icon="mdi-open-in-new"
             class="mx-auto"
-            @click="cardClick(1)"
+            @click="cardClick(index)"
             max-width="344"
-            prepend-icon="mdi-github"
+            prepend-icon="mdi-web"
             rel="noopener"
             subtitle="Check out the official repository"
             target="_blank"
-            title="Vuetify on GitHub"
-          ></v-card>
+            :title="url.short_url"
+          >
+            {{}}
+            <!-- Assuming 'url' is the property containing URL -->
+          </v-card>
         </v-col>
       </v-row>
-
       <div class="py-4" />
     </v-responsive>
   </v-container>
 </template>
 
 <script setup>
-const store = useCounterStore();
-const cardClick = (id) => {
-  store.randomizeCounter();
-  console.log("adsasdadsads", id);
+import { computed } from "vue";
+import { urlModal } from "../stores/modals/model/url";
+
+const store = urlModal();
+
+onMounted(() => {
+  store.takeUrls();
+});
+
+const urls = computed(() => {
+  return store.getUrls;
+});
+
+const cardClick = () => {
+  // Passing the index to setUrls if needed
+  console.log("Clicked card index:", index);
 };
 </script>

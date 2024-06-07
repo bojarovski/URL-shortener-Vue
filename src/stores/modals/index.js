@@ -1,5 +1,5 @@
-import authModel from "./modules/auth";
+import urls from "./model/url";
 
 export default {
-  authModel,
+  urls,
 };

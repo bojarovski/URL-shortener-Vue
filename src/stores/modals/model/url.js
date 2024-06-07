@@ -1,18 +1,19 @@
 import { defineStore } from "pinia";
+import _axios from "@/plugins/axios";
 import Repository from "../../repositories/RepositoryFactory";
 
-const AuthenticationRepository = Repository.get("authentication");
+const UrlRepository = Repository.get("url");
 
-export const useCounterStore = defineStore("Url", {
+export const urlModal = defineStore("Url", {
   state: () => ({
-    urls: "mario",
+    urls: [],
   }),
   actions: {
-    increment() {
-      console.log(this.urls);
+    async takeUrls() {
+      this.urls = await UrlRepository.getUrls();
     },
   },
   getters: {
-    doubleCount: (state) => state.count * 2,
+    getUrls: (state) => state.urls,
   },
 });

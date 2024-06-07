@@ -1,7 +1,7 @@
-import AuthenticationRepository from "../repositories/v1/AuthenticationRepository";
+import UrlRepository from "../repositories/repository/UrlRepository";
 
 const repositories = {
-  authentication: AuthenticationRepository,
+  url: UrlRepository,
 };
 
 export default {
