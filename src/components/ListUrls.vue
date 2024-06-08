@@ -108,6 +108,7 @@ const url = computed(() => {
 
 watch(url, (newUrl) => {
   window.open(newUrl);
+  store.takeUrls();
 });
 
 const cardClick = (index) => {

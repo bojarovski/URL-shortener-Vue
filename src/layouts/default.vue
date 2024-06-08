@@ -5,9 +5,10 @@
     </v-main>
 
     <v-alert
+      v-if="alertShow"
       color="success"
       icon="mdi-check-circle"
-      title="Alert title"
+      :title="alertShow"
       class="absolute-alert"
     >
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, ratione
@@ -19,15 +20,24 @@
 </template>
 
 <script setup>
-//
+import { alertModal } from "../stores/modals/model/alert";
+const store = alertModal();
+
+const alertShow = computed(() => {
+  return store.getUrls;
+});
+
+watch(alertShow, () => {
+  store.showHideAlert(false);
+});
 </script>
 <style>
 .absolute-alert {
   position: absolute;
-  top: 20px; /* Position it above the footer */
-  right: 1px;
-  transform: translateX(-10%);
-  width: 400px; /* Adjust as needed */
+  bottom: 80%; /* Position it above the footer */
+  left: 60%;
+  /* transform: translateX(-50%); */
+  width: 35%; /* Adjust as needed */
   z-index: 9999; /* Ensure it appears above other content */
 }
 </style>
