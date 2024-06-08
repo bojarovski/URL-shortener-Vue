@@ -18,7 +18,7 @@
             max-width="344"
             prepend-icon="mdi-web"
             rel="noopener"
-            subtitle="Link Short Name"
+            subtitle="Hased Url"
             target="_blank"
             :title="url.short_url"
           >
