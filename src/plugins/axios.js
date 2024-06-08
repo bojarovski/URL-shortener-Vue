@@ -11,7 +11,6 @@ const config = {
   withCredentials: false, // Check cross-site Access-Control
   // Accept: '*/*',
 };
-console.log("URL: " + process.env.VUE_APP_API_URL);
 
 const api = axios.create(config);
 export function setAuthToken(token) {

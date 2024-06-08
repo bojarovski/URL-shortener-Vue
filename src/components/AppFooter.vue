@@ -25,7 +25,7 @@
 <script setup>
 const items = [
   {
-    title: "Vuetify GitHub",
+    title: "Mario's GitHub",
     icon: `mdi-github`,
     href: "https://github.com/bojarovski",
   },
