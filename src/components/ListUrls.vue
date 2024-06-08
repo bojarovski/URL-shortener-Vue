@@ -5,10 +5,16 @@
         <h1 class="text-h2 font-weight-bold">List Urls</h1>
       </div>
       <v-row>
-        <v-col v-for="(url, index) in urls" :key="index">
+        <v-col
+          cols="12"
+          sm="6"
+          md="6"
+          v-for="(url, index) in urls"
+          :key="index"
+        >
           <v-card
             class="mx-auto"
-            @click="cardClick(url.short_url)"
+            @click="cardClick(url.code)"
             max-width="344"
             prepend-icon="mdi-web"
             rel="noopener"
