@@ -2,18 +2,36 @@ import _axios from "@/plugins/axios";
 
 export default {
   async getUrls() {
-    const response = await _axios.get("api/urls");
-
-    return response.data;
+    try {
+      const response = await _axios.get("api/urls");
+      return response.data;
+    } catch (error) {
+      console.error("An error occurred while fetching URLs:", error);
+      throw error;
+    }
   },
 
   async getUrl(id) {
-    const response = await _axios.get(`api/${id}`);
-
-    return response.data.original_url;
+    try {
+      const response = await _axios.get(`api/${id}`);
+      return response.data.original_url;
+    } catch (error) {
+      console.error(
+        `An error occurred while fetching the URL with id ${id}:`,
+        error
+      );
+      throw error;
+    }
   },
+
   async storeUrl(body) {
-    const response = await _axios.post(`api/shorten`, body);
-    return response.data.original_url ?? response.data;
+    try {
+      const response = await _axios.post(`api/shorten`, body);
+      console.log(response.data);
+      return response.data.original_url;
+    } catch (error) {
+      console.error("An error occurred while storing the URL:", error);
+      throw error;
+    }
   },
 };
